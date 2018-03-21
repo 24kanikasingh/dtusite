@@ -1,0 +1,59 @@
+<html>
+<head>
+{% load static %}
+<title>MyWebProject</title>
+<link rel="stylesheet" href="{% static 'mechanical/bootstrap.min.css' %}" type="text/css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="{% static 'mechanical/style.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.bar,h1,button {font-family: "Montserrat", sans-serif}
+</style>
+<body>
+<header class="container1 row " style="padding:128px 16px;background-color:#f44336;color:black;text-align:center;left:0">
+  
+<h1 style="margin:16px;font-size:63px">Questions</h1>
+  
+ 
+</header>
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<br>
+<h2 style="margin-left: 50px">It's Your Turn to Grade {{teacher.name}}</h2>
+<form action="{% url 'mechanical:vote' teacher.id %}" method="post" style="margin-left: 50px">
+{% csrf_token %}
+
+<!--<script>
+var t = "{{teacher.votes}}";
+if(document.getElementById('yes').checked)
+t++;
+</script>
+-->
+<br>
+<br>
+<div class="row">
+	<div class="col-md-6">
+
+	{{form}}
+</div>
+<div class="col-md-6">
+<img src="{% static "images/attd1.jpg" %}">
+<img src="{% static "images/on_time.png" %}">
+</div>
+</div>
+
+
+<input type="submit" value="Submit" class="btn btn-default"/>
+</form>

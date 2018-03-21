@@ -1,0 +1,63 @@
+<html>
+<head>
+{% load static %}
+<title>rate</title>
+<link rel="stylesheet" href="{% static 'mechanical/bootstrap.min.css' %}" type="text/css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'mechanical/style.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.bar,h1,button {font-family: "Montserrat", sans-serif}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="top">
+  <div class="bar card-2" style="background-color:#f44336;color:white;font-size:18px;width:100%">
+    
+    <a href="{% url 'polls:index' %}" class="bar-item button hover-white" style="padding:12px 24px">Home</a>
+    <a href="{% url 'rate:index' %}" class="bar-item button hover-white" style="padding:12px 24px">Rate</a>
+        <a href="{% url 'about:index' %}" class="bar-item button hover-white" style="padding:12px 24px">About Us</a>
+   
+    </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="bar-block" style="color:white;font-size:18px;display:none">
+    <a href="#" class="bar-item button" style="padding:12px 24px">Link 1</a>
+    <a href="#" class="bar-item button" style="padding:12px 24px">Link 2</a>
+    <a href="#" class="bar-item button" style="padding:12px 24px">Link 3</a>
+    
+  </div>  
+</div>
+<!-- Header -->
+<header class="container1 row " style="padding:128px 16px;background-color:#f44336;color:white;text-align:center;left:0">
+  
+  <h1 style="margin:16px;font-size:63px">Mechanical Engineering Faculty</h1>
+  
+  
+</header>
+<br>
+<br>
+<div class="container">
+<div class="list-group">
+{% if latest_teacher_list %}
+    
+    {% for teacher in latest_teacher_list %}
+        <a class="list-group-item" href="{% url 'mechanical:detail' teacher.id %}">{{ teacher.name }}</a></li>
+    {% endfor %}
+    
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+</div>
+</body>
+</html>
